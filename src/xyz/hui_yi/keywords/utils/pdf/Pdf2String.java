@@ -5,6 +5,10 @@ import org.apache.pdfbox.text.PDFTextStripper;
 
 import java.io.File;
 
+/**
+ * @author li-fengjie
+ * pdf 文件转文本
+ */
 public class Pdf2String {
 
     public static String pdf2String(File pdfFile){
