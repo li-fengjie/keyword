@@ -46,6 +46,24 @@ public class ReadFromFile {
         }
         return result;
     }
+
+    /**
+     * 文件转换为字符串
+     *
+     * @param file      文件
+     * @param charset 文件的字符集
+     * @return 文件内容
+     */
+    public static String file2String(File file, String charset) {
+        String result = null;
+        try {
+            result = stream2String(new FileInputStream(file), charset);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     /**
      * 文件转换为字符串
      *

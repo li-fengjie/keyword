@@ -72,6 +72,7 @@ public class UploadServlet extends HttpServlet {
             //保存文件
             part.write(dir);
             //TODO 数据库存储文件位置
+
         }else {
 
         }
