@@ -33,7 +33,19 @@ public class CompanyDao {
 		}
 		return null;
 	}
-	
+
+	public CompanyBean queryCompanyPageBean() {
+		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
+		String sql="select * from company";
+		try {
+			CompanyBean companyBeans = qr.query(sql, new BeanHandler<CompanyBean>(CompanyBean.class));
+			return companyBeans;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	public void insertToCompanyBean(String c_id,String cname,String industry,String stockcode,String stockname,String state) {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
 		String sql="insert into company(c_id,cname,industry,stockcode,stockname,state) values(?,?,?,?,?,?)";

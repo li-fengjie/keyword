@@ -2,7 +2,7 @@
 <c3p0-config>
   <default-config>
     <property name="driverClass">com.mysql.jdbc.Driver</property>
-    <property name="jdbcUrl">jdbc:mysql://localhost:3306/keywords</property>
+    <property name="jdbcUrl">jdbc:mysql://localhost:3306/keyword</property>
     <property name="user">root</property>
     <property name="password">10521</property>
     
@@ -14,8 +14,8 @@
 
     <user-overrides user="test-user">
       <property name="maxPoolSize">10</property>
-      <property name="minPoolSize">1</property>
-      <property name="maxStatements">0</property>
+      <property name="minPoolSize">10</property>
+      <property name="maxStatements">10</property>
     </user-overrides>
 
   </default-config>
