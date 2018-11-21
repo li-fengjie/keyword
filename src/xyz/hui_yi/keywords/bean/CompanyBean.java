@@ -2,7 +2,7 @@ package xyz.hui_yi.keywords.bean;
 
 public class CompanyBean {
     private String c_id;
-    private String name;
+    private String cname;
     private String industry;
     private String stockcode;
     private String stockname;
@@ -17,11 +17,11 @@ public class CompanyBean {
     }
 
     public String getName() {
-        return name;
+        return cname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String cname) {
+        this.cname = cname;
     }
 
     public String getIndustry() {
@@ -60,7 +60,7 @@ public class CompanyBean {
     public String toString() {
         return "CompanyBean{" +
                 "c_id='" + c_id + '\'' +
-                ", name='" + name + '\'' +
+                ", cname='" + cname + '\'' +
                 ", industry='" + industry + '\'' +
                 ", stockcode='" + stockcode + '\'' +
                 ", stockname='" + stockname + '\'' +
