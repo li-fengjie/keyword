@@ -1,7 +1,7 @@
 package xyz.hui_yi.keywords.servlet;
 
 import net.sf.json.JSONObject;
-import xyz.hui_yi.keywords.bean.CompanyBean;
+import xyz.hui_yi.keywords.bean.CompanyPageBean;
 import xyz.hui_yi.keywords.dao.CompanyDao;
 
 import javax.servlet.ServletException;
@@ -30,18 +30,12 @@ public class CompanyInfoServlet extends HttpServlet {
 	 */
     private CompanyDao companyDao=new CompanyDao();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String pageNoStr=request.getParameter("pageno");
-//		String pageSizeStr=request.getParameter("pagesize");
-//		System.out.println(pageNoStr + " " + pageSizeStr);
-//		int pageno=Integer.parseInt(pageNoStr);
-//		int pagesize=Integer.parseInt(pageSizeStr);
-
-//		CompanyPageBean pageBean=companyDao.queryCompanyPageBean(pageno, pagesize);
-		CompanyBean companyBeans =companyDao.queryCompanyPageBean();
+		CompanyPageBean companyBeans =companyDao.queryCompanyPageBean();
 		System.out.println(companyBeans);
 		if(companyBeans != null) {
 			JSONObject jsonObject= JSONObject.fromObject(companyBeans);
 			response.setContentType("text/html;charset=utf-8");
+//			response.setContentType("application/json; charset=utf-8");
 			response.getWriter().print(jsonObject.toString());
 //			response.getWriter().print("error");
 		}else {

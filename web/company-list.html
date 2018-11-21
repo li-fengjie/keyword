@@ -23,6 +23,12 @@
     <script>DD_belatedPNG.fix('*');</script>
     <![endif]-->
     <title>公司列表</title>
+
+    <!--<script type="text/javascript">-->
+    <!--window.onload = function () {-->
+    <!--loadCompanyData();-->
+    <!--}-->
+    <!--</script>-->
 </head>
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 公司管理 <span
@@ -30,7 +36,7 @@
                                               href="javascript:location.replace(location.href);" title="刷新"><i
         class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-    <div class="cl pd-5 bg-1 bk-gray mt-20"><span class="l"><a href="javascript:;" onclick="datadel()"
+    <div class="cl pd-5 bg-1 bk-gray mt-20"><span class="l"><a href="javascript:;" onclick="loadCompanyData()"
                                                                class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a
             href="javascript:;" onclick="admin_add('添加公司','company-add.html','800','500')"
             class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加公司</a></span> <span
@@ -51,691 +57,26 @@
             <th width="100">操作</th>
         </tr>
         </thead>
-        <tbody>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr><tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-        <tr class="text-c">
-            <td><input type="checkbox" value="1" name=""></td>
-            <td>1</td>
-            <td>admin</td>
-            <td>超级公司</td>
-            <td>13000000000</td>
-            <td>2014-6-11 11:11:42</td>
-            <td class="td-status"><span class="label label-success radius">已启用</span></td>
-            <td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"
-                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"
-                                                                                            href="javascript:;"
-                                                                                            onclick="admin_edit('公司编辑','company-add.html','1','800','500')"
-                                                                                            class="ml-5"
-                                                                                            style="text-decoration:none"><i
-                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
-                                                             onclick="admin_del(this,'1')" class="ml-5"
-                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-            </td>
-        </tr>
-
+        <tbody id="company-list-data">
+        <!--<tr class="text-c">-->
+        <!--<td><input type="checkbox" value="1" name=""></td>-->
+        <!--<td>1</td>-->
+        <!--<td>admin</td>-->
+        <!--<td>超级公司</td>-->
+        <!--<td>13000000000</td>-->
+        <!--<td>2014-6-11 11:11:42</td>-->
+        <!--<td class="td-status"><span class="label label-success radius">已启用</span></td>-->
+        <!--<td class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,'10001')" href="javascript:;"-->
+        <!--title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"-->
+        <!--href="javascript:;"-->
+        <!--onclick="admin_edit('公司编辑','company-add.html','1','800','500')"-->
+        <!--class="ml-5"-->
+        <!--style="text-decoration:none"><i-->
+        <!--class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"-->
+        <!--onclick="admin_del(this,'1')" class="ml-5"-->
+        <!--style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>-->
+        <!--</td>-->
+        <!--</tr>-->
         </tbody>
     </table>
 </div>
@@ -750,9 +91,33 @@
 <script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
+
     $('.table-sort').dataTable({
         "aaSorting": [[1, "desc"]],//默认第几个排序
         "bStateSave": true,//状态保存
+        "serverSide": true,
+        //主要的区别
+        "ajax":'/companyInfo',
+//        ajax: function (data, callback, setting) {
+//            $.ajax({
+//                url: "/companyInfo",
+//                success: function (data) {
+//                    //这边只是为了修改数据的格式使其符合datatable的数据格式
+//
+//                    callback(result)
+//                }
+//            })
+//        },
+        "columns": [
+            { "data": "c_id" },
+            { "data": "name" },
+            { "data": "industry" },
+            { "data": "stockcode" },
+            { "data": "state" },
+            { "data": null },
+            { "data": null },
+        ],
+
         "aoColumnDefs": [
             //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
             {"orderable": false, "aTargets": [0, 6]}// 制定列不参与排序
@@ -760,25 +125,81 @@
     });
 </script>
 
-//查询公司列表
+<script type="text/javascript">
+    function getXMLHttpRequest() {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            //目前主流浏览器
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            //ie 6  7
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        return xmlhttp;
+    }
+</script>
+<!--查询公司列表-->
 <script type="text/javascript">
     function loadCompanyData() {
         var xmlhttp = getXMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                 //4代表响应数据已经读取完毕。
                 //200代表代表读取的响应数据是一个成功的数据。
                 var str = xmlhttp.responseText;
                 var jsonObject = JSON.parse(str);
-                curr_pageno = jsonObject.pageNo;
-                pagesum = jsonObject.pageSum;
-                var jsonArray = jsonObject.user;
+                var jsonArray = jsonObject.companyBeans;
                 var temp = "";
-                if (str == "true") {
-
-                } else {
-                    alert("服务器忙，请稍后重试...")
+                for (var i = 0; i < jsonArray.length; i++) {
+                    temp = temp + "<tr class=\"text-c\">\n" +
+                        "            <td><input type=\"checkbox\" value=\"1\" name=\"\"></td>\n" +
+                        "            <td>" + jsonArray[i].c_id +
+                        "</td>\n" +
+                        "            <td>" + jsonArray[i].industry +
+                        "</td>\n" +
+                        "            <td>" + jsonArray[i].name +
+                        "</td>\n" +
+                        "            <td>" + jsonArray[i].stockcode +
+                        "</td>\n" +
+                        "            <td>" + jsonArray[i].stockname +
+                        "</td>\n";
+                    if (jsonArray[i].state === "" || jsonArray[i].state === "0") {
+                        temp = temp + "            <td class=\"td-status\"><span class=\"label label-success radius\">已启用</span></td>\n" +
+                            "            <td class=\"td-manage\"><a style=\"text-decoration:none\" onClick=\"admin_stop(this,'" + jsonArray[i].c_id +
+                            "')\" href=\"javascript:;\"\n" +
+                            "                                     title=\"停用\"><i class=\"Hui-iconfont\">&#xe631;</i></a> <a title=\"编辑\"\n" +
+                            "                                                                                            href=\"javascript:;\"\n" +
+                            "                                                                                            onclick=\"admin_edit('公司编辑','company-add.html','" + jsonArray[i].c_id +
+                            "','800','500')\"\n" +
+                            "                                                                                            class=\"ml-5\"\n" +
+                            "                                                                                            style=\"text-decoration:none\"><i\n" +
+                            "                    class=\"Hui-iconfont\">&#xe6df;</i></a> <a title=\"删除\" href=\"javascript:;\"\n" +
+                            "                                                             onclick=\"admin_del(this,'" + jsonArray[i].c_id +
+                            "')\" class=\"ml-5\"\n" +
+                            "                                                             style=\"text-decoration:none\"><i class=\"Hui-iconfont\">&#xe6e2;</i></a>\n" +
+                            "            </td>\n" +
+                            "        </tr>";
+                    } else {
+                        temp = temp +
+                            "            <td class=\"td-status\"><span class=\"label label-success radius\">已禁用</span></td>\n" +
+                            "            <td class=\"td-manage\">" +
+                            "<a onClick=\"admin_start(this," + jsonArray.c_id +
+                            ")\" href=\"javascript:;\" title=\"启用\" style=\"text-decoration:none\"><i class=\"Hui-iconfont\">&#xe615;</i></a>" +
+                            " <a title=\"编辑\"\n" +
+                            "                                                                                            href=\"javascript:;\"\n" +
+                            "                                                                                            onclick=\"admin_edit('公司编辑','company-add.html','" + jsonArray[i].c_id +
+                            "','800','500')\"\n" +
+                            "                                                                                            class=\"ml-5\"\n" +
+                            "                                                                                            style=\"text-decoration:none\"><i\n" +
+                            "                    class=\"Hui-iconfont\">&#xe6df;</i></a> <a title=\"删除\" href=\"javascript:;\"\n" +
+                            "                                                             onclick=\"admin_del(this,'" + jsonArray[i].c_id +
+                            "')\" class=\"ml-5\"\n" +
+                            "                                                             style=\"text-decoration:none\"><i class=\"Hui-iconfont\">&#xe6e2;</i></a>\n" +
+                            "            </td>\n" +
+                            "        </tr>";
+                    }
                 }
+                document.getElementById("company-list-data").innerHTML = temp;
                 return false;
             }
         };
@@ -788,19 +209,7 @@
         xmlhttp.open("post", url);
         //设置请求信息的头
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        //发送数据
-        var update_stu_college = document.getElementById("update_stu_college").value;
-        var update_stu_grade = document.getElementById("update_stu_grade").value;
-        var update_stu_profession = document.getElementById("update_stu_profession").value;
-        var update_stu_classes = document.getElementById("update_stu_classes").value;
-        var update_stu_name = document.getElementById("update_stu_name").value;
-        xmlhttp.send("" +
-            "update_stu_id=" + id +
-            "&update_stu_college=" + update_stu_college +
-            "&update_stu_grade=" + update_stu_grade +
-            "&update_stu_profession=" + update_stu_profession +
-            "&update_stu_classes=" + update_stu_classes +
-            "&update_stu_name=" + update_stu_name);
+        xmlhttp.send("");
         return false;
     }
 </script>

@@ -5,7 +5,7 @@ import java.util.List;
 public class CompanyPageBean {
 	private long pageNo;
 	private long pageSum;
-	private List<CompanyBean> companyBeans;
+	private List<CompanyBean> companys;
 	private int pageSize;
 	public long getPageNo() {
 		return pageNo;
@@ -20,10 +20,10 @@ public class CompanyPageBean {
 		this.pageSum = pageSum;
 	}
 	public List<CompanyBean> getCompanyBeans() {
-		return companyBeans;
+		return companys;
 	}
 	public void setCompanyBeans(List<CompanyBean> companyBeans) {
-		this.companyBeans = companyBeans;
+		this.companys = companyBeans;
 	}
 	public int getPageSize() {
 		return pageSize;
@@ -37,7 +37,7 @@ public class CompanyPageBean {
 		return "CompanyPageBean{" +
 				"pageNo=" + pageNo +
 				", pageSum=" + pageSum +
-				", companyBeans=" + companyBeans +
+				", companyBeans=" + companys +
 				", pageSize=" + pageSize +
 				'}';
 	}

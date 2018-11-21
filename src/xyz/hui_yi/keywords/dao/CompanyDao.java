@@ -34,12 +34,17 @@ public class CompanyDao {
 		return null;
 	}
 
-	public CompanyBean queryCompanyPageBean() {
+	public CompanyPageBean queryCompanyPageBean() {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
 		String sql="select * from company";
+		CompanyPageBean CompanyPageBean=new CompanyPageBean();
 		try {
-			CompanyBean companyBeans = qr.query(sql, new BeanHandler<CompanyBean>(CompanyBean.class));
-			return companyBeans;
+			List<CompanyBean> CompanyBeans=qr.query(sql, new BeanListHandler<CompanyBean>(CompanyBean.class));
+			CompanyPageBean.setCompanyBeans(CompanyBeans);
+			Object object=qr.query("select count(*) from company", new ScalarHandler());
+			long num=(Long)object;
+			CompanyPageBean.setPageSum(num);
+			return CompanyPageBean;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
