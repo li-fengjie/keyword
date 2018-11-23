@@ -34,8 +34,8 @@ public class CompanyInfoServlet extends HttpServlet {
 		System.out.println(companyBeans);
 		if(companyBeans != null) {
 			JSONObject jsonObject= JSONObject.fromObject(companyBeans);
-			response.setContentType("text/html;charset=utf-8");
-//			response.setContentType("application/json; charset=utf-8");
+//			response.setContentType("text/html;charset=utf-8");
+			response.setContentType("application/json; charset=utf-8");
 			response.getWriter().print(jsonObject.toString());
 //			response.getWriter().print("error");
 		}else {

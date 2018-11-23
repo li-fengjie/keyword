@@ -41,20 +41,20 @@
             href="javascript:;" onclick="admin_add('添加公司','company-add.html','800','500')"
             class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加公司</a></span> <span
             class="r">共有数据：<strong>54</strong> 条</span></div>
-    <table class="table table-border table-bordered table-bg table-sort">
+    <table class="table table-border table-bordered table-bg table-sort" id="dataTable">
         <thead>
         <tr>
-            <th scope="col" colspan="9">公司列表</th>
+            <th scope="col" colspan="6">公司列表</th>
         </tr>
         <tr class="text-c">
-            <th width="25"><input type="checkbox" name="" value=""></th>
+            <!--<th width="25"><input type="checkbox" name="" value=""></th>-->
             <th width="40">ID</th>
             <th width="150">行业</th>
             <th width="90">公司名称</th>
             <th width="150">股票代码</th>
             <th width="150">股票名称</th>
             <th width="100">是否已启用</th>
-            <th width="100">操作</th>
+            <!--<th width="100">操作</th>-->
         </tr>
         </thead>
         <tbody id="company-list-data">
@@ -92,30 +92,30 @@
 <script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
 
-    $('.table-sort').dataTable({
+    $('#dataTable').dataTable({
         "aaSorting": [[1, "desc"]],//默认第几个排序
         "bStateSave": true,//状态保存
         "serverSide": true,
         //主要的区别
         "ajax":'/companyInfo',
-//        ajax: function (data, callback, setting) {
-//            $.ajax({
-//                url: "/companyInfo",
-//                success: function (data) {
-//                    //这边只是为了修改数据的格式使其符合datatable的数据格式
-//
-//                    callback(result)
-//                }
-//            })
-//        },
+        dataSrc:function(result){
+            //这里result和上面jquery的ajax的代码类似，也是可以得到data.json的数据，但是这样的格式，Datatables不能直接使用，这时候需要在这里处理一下
+
+            //直接返回Datatables需要的那部分数据即可，看到这里，大家或许又懂了些什么看到了他的强大和灵活
+            console.log(result);
+            return result.companyBeans;
+        },
+//        dataSrc:"companyBeans",
         "columns": [
-            { "data": "c_id" },
-            { "data": "name" },
-            { "data": "industry" },
-            { "data": "stockcode" },
-            { "data": "state" },
-            { "data": null },
-            { "data": null },
+//            { "companyBeans": null },
+            { "companyBeans": "c_id" },
+            { "companyBeans": "industry" },
+            { "companyBeans": "name" },
+
+            { "companyBeans": "stockcode" },
+            { "companyBeans": "stockname" },
+            { "companyBeans": "state" },
+//            { "companyBeans": null },
         ],
 
         "aoColumnDefs": [
