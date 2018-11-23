@@ -24,11 +24,11 @@
     <![endif]-->
     <title>公司列表</title>
 
-    <!--<script type="text/javascript">-->
-    <!--window.onload = function () {-->
-    <!--loadCompanyData();-->
-    <!--}-->
-    <!--</script>-->
+    <script type="text/javascript">
+        window.onload = function () {
+            loadCompanyData();
+        }
+    </script>
 </head>
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 公司管理 <span
@@ -36,7 +36,7 @@
                                               href="javascript:location.replace(location.href);" title="刷新"><i
         class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-    <div class="cl pd-5 bg-1 bk-gray mt-20"><span class="l"><a href="javascript:;" onclick="loadCompanyData()"
+    <div class="cl pd-5 bg-1 bk-gray mt-20"><span class="l"><a href="javascript:;" onclick=""
                                                                class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a
             href="javascript:;" onclick="admin_add('添加公司','company-add.html','800','500')"
             class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加公司</a></span> <span
@@ -47,14 +47,14 @@
             <th scope="col" colspan="6">公司列表</th>
         </tr>
         <tr class="text-c">
-            <!--<th width="25"><input type="checkbox" name="" value=""></th>-->
+            <th width="25"><input type="checkbox" name="" value=""></th>
             <th width="40">ID</th>
             <th width="150">行业</th>
             <th width="90">公司名称</th>
             <th width="150">股票代码</th>
             <th width="150">股票名称</th>
             <th width="100">是否已启用</th>
-            <!--<th width="100">操作</th>-->
+            <th width="100">操作</th>
         </tr>
         </thead>
         <tbody id="company-list-data">
@@ -92,32 +92,13 @@
 <script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
 
-    $('#dataTable').dataTable({
+    t = $('#dataTable').dataTable({
         "aaSorting": [[1, "desc"]],//默认第几个排序
         "bStateSave": true,//状态保存
-        "serverSide": true,
-        //主要的区别
-        "ajax":'/companyInfo',
-        dataSrc:function(result){
-            //这里result和上面jquery的ajax的代码类似，也是可以得到data.json的数据，但是这样的格式，Datatables不能直接使用，这时候需要在这里处理一下
-
-            //直接返回Datatables需要的那部分数据即可，看到这里，大家或许又懂了些什么看到了他的强大和灵活
-            console.log(result);
-            return result.companyBeans;
-        },
-//        dataSrc:"companyBeans",
-        "columns": [
-//            { "companyBeans": null },
-            { "companyBeans": "c_id" },
-            { "companyBeans": "industry" },
-            { "companyBeans": "name" },
-
-            { "companyBeans": "stockcode" },
-            { "companyBeans": "stockname" },
-            { "companyBeans": "state" },
-//            { "companyBeans": null },
-        ],
-
+//        "dataSrc": function ( json ) {
+//            console.log(json);
+//            return json;
+//        },
         "aoColumnDefs": [
             //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
             {"orderable": false, "aTargets": [0, 6]}// 制定列不参与排序

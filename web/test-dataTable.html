@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#myTable').DataTable({
+                //表示翻页时是否显示 processing信息（正在加载中），这个信息可以修改
+                "processing": true,
+                // 服务器端处理方式
+                "serverSide": true,
+                "ajax": {
+                    // url可以直接指定远程的json文件
+                    url: "/companyInfo",
+                    type: 'POST',
+                },
+                "columns": [
+            { companyBeans: 'c_id' },
+            { companyBeans: 'industry' },
+            { companyBeans: 'name' },
+            { companyBeans: 'stockcode' },
+            { companyBeans: 'stockname' },
+            { companyBeans: 'state' },
+//                    { data: 'id'},
+//                    { data: 'name'},
+//                    { data: 'birthday'}
+                ]
+            });
+        });
+    </script>
+</head>
+<body>
+<table id="myTable">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>行业</th>
+        <th>公司名称</th>
+        <th>股票代码</th>
+        <th>股票名称</th>
+        <th>是否已启用</th>
+    </tr>
+    </thead>
+</table>
+</body>
+</html>
