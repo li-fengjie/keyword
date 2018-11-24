@@ -3012,6 +3012,9 @@ table th {
     background-color: #f5fafe
 }
 
+.tableTable{
+    text-align: center;
+}
 .table-bordered {
     border: 1px solid #ddd;
     border-collapse: separate;

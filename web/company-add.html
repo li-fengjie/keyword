@@ -81,30 +81,16 @@
 
         $("#form-admin-add").validate({
             rules: {
-                adminName: {
-                    required: true,
-                    minlength: 4,
-                    maxlength: 16
-                },
-                password: {
+                industry: {
                     required: true,
                 },
-                password2: {
-                    required: true,
-                    equalTo: "#password"
-                },
-                sex: {
+                cname: {
                     required: true,
                 },
-                phone: {
+                stockcode: {
                     required: true,
-                    isPhone: true,
                 },
-                email: {
-                    required: true,
-                    email: true,
-                },
-                adminRole: {
+                stockname: {
                     required: true,
                 },
             },
