@@ -26,7 +26,7 @@
 </head>
 <body>
 <article class="page-container">
-    <form class="form form-horizontal" id="form-admin-add">
+    <form class="form form-horizontal" id="form-company-add">
         <!--行业	公司名称	股票代码	股票名称-->
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>行业名称：</label>
@@ -73,13 +73,7 @@
 <script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
 <script type="text/javascript">
     $(function () {
-        $('.skin-minimal input').iCheck({
-            checkboxClass: 'icheckbox-blue',
-            radioClass: 'iradio-blue',
-            increaseArea: '20%'
-        });
-
-        $("#form-admin-add").validate({
+        $("#form-company-add").validate({
             rules: {
                 industry: {
                     required: true,
@@ -100,7 +94,7 @@
             submitHandler: function (form) {
                 $(form).ajaxSubmit({
                     type: 'post',
-                    url: "xxxxxxx",
+                    url: "/TestServlet",
                     success: function (data) {
                         layer.msg('添加成功!', {icon: 1, time: 1000});
                     },
@@ -109,7 +103,8 @@
                     }
                 });
                 var index = parent.layer.getFrameIndex(window.name);
-                parent.$('.btn-refresh').click();
+                window.parent.location.reload();//刷新父页面
+//                parent.$('.btn-refresh').click();
                 parent.layer.close(index);
             }
         });

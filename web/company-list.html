@@ -25,8 +25,59 @@
     <title>公司列表</title>
 
     <script type="text/javascript">
+        var jsonArray;
+        var length;
         window.onload = function () {
             loadCompanyData();
+        }
+        function loadData(last) {
+            var l = last;
+            for (var i = l; i < l + 100; i++) {
+                t.row.add([
+                    '<p align="center"><input type="checkbox" value="1" name=""></p>',
+                    '<p align="center">' + jsonArray[i].c_id + '</p>',
+                    '<p align="center">' + jsonArray[i].industry + '</p>',
+                    '<p align="center">' + jsonArray[i].name + '</p>',
+                    '<p align="center">' + jsonArray[i].stockcode + '</p>',
+                    '<p align="center">' + jsonArray[i].stockname + '</p>',
+                    (jsonArray[i].state === "" || jsonArray[i].state === "0")?
+                        '<p align="center" class="td-status">' + '<span class="label label-success radius">已启用</span>' + '</p>':
+                        '<p align="center" class="td-status">' + '<span class="label label-default radius">已禁用</span>' + '</p>',
+                    (jsonArray[i].state === "" || jsonArray[i].state === "0")?
+                        '<p align="center" class="td-manage"><a style="text-decoration:none" onClick="admin_stop(this,\'' + jsonArray[i].c_id +
+                        '\')" href="javascript:;"\n' +
+                        '                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"\n' +
+                        '                                                                                            href="javascript:;"\n' +
+                        '                                                                                            onclick="admin_edit(\'公司编辑\',\'company-add.html\',\'' + jsonArray[i].c_id +
+                        '\',\'800\',\'500\')"\n' +
+                        '                                                                                            class="ml-5"\n' +
+                        '                                                                                            style="text-decoration:none"><i\n' +
+                        '                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"\n' +
+                        '                                                             onclick="admin_del(this,\'' + jsonArray[i].c_id +
+                        '\')" class="ml-5"\n' +
+                        '                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></p>'
+                        :
+                        '<p align="center" class="td-manage"><a style="text-decoration:none" onClick="admin_start(this,\'' + jsonArray[i].c_id +
+                        '\')" href="javascript:;"\n' +
+                        '                                     title="启用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑"\n' +
+                        '                                                                                            href="javascript:;"\n' +
+                        '                                                                                            onclick="admin_edit(\'公司编辑\',\'company-add.html\',\'' + jsonArray[i].c_id +
+                        '\',\'800\',\'500\')"\n' +
+                        '                                                                                            class="ml-5"\n' +
+                        '                                                                                            style="text-decoration:none"><i\n' +
+                        '                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"\n' +
+                        '                                                             onclick="admin_del(this,\'' + jsonArray[i].c_id +
+                        '\')" class="ml-5"\n' +
+                        '                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></p>'
+
+
+                ]).draw();
+            }
+            if(l + 100 < length){
+                var next = l + 100;
+                setTimeout('loadData(' + next +
+                    ')',1000);
+            }
         }
     </script>
 </head>
@@ -115,11 +166,13 @@
                 //200代表代表读取的响应数据是一个成功的数据。
                 var str = xmlhttp.responseText;
                 var jsonObject = JSON.parse(str);
-                var jsonArray = jsonObject.companyBeans;
+                jsonArray = jsonObject.companyBeans;
                 var pageNum = jsonObject.pageSum;
                 document.getElementById("pageNum").innerHTML = "共有数据：<strong>" + pageNum
                     "</strong> 条";
-                for (var i = jsonArray.length - 1; i >= 0; i--) {
+                length = jsonArray.length;
+                var l = (length > 100)?100:length;
+                for (var i = 0; i < l; i++) {
                     t.row.add([
                         '<p align="center"><input type="checkbox" value="1" name=""></p>',
                         '<p align="center">' + jsonArray[i].c_id + '</p>',
@@ -160,7 +213,7 @@
 
                     ]).draw();
                 }
-
+                setTimeout('loadData(100)', 1000); //延迟1秒
 /*                var temp = "";
                 for (var i = 0; i < jsonArray.length; i++) {
                     temp = temp + "<tr class=\"text-c\">\n" +
