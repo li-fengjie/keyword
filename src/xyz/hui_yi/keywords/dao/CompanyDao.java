@@ -51,7 +51,7 @@ public class CompanyDao {
 		return null;
 	}
 
-	public void insertToCompanyBean(String c_id,String cname,String industry,String stockcode,String stockname,String state) {
+	public void insertToCompanyBean(String c_id,String cname,String industry,String stockcode,String stockname,int state) {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
 		String sql="insert into company(c_id,cname,industry,stockcode,stockname,state) values(?,?,?,?,?,?)";
 		try {
@@ -61,7 +61,7 @@ public class CompanyDao {
 		}
 	}
 //(c_id,cname,industry,stockcode,stockname,state)
-	public void updateCompanyBean(String c_id,String cname,String industry,String stockcode,String stockname,String state) {
+	public void updateCompanyBean(String c_id,String cname,String industry,String stockcode,String stockname,int state) {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
 		String sql="update company set cname=?,industry=?,stockcode=?,stockname=?,state=? where c_id=?";
 		try {
@@ -71,7 +71,27 @@ public class CompanyDao {
 		}
 	}
 
-	public void deleteCompanyBean(String c_id) {
+	public void startCompanyBean(int c_id) {
+		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
+		String sql="update company set state=? where c_id=?";
+		try {
+			qr.update(sql,0,c_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+    public void stopCompanyBean(int c_id) {
+        QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
+        String sql="update company set state=? where c_id=?";
+        try {
+            qr.update(sql,1,c_id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+	public void deleteCompanyBean(int c_id) {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
 		String sql="delete from company where c_id=?";
 		try {

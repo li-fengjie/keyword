@@ -23,10 +23,23 @@
     <title>添加公司 - 公司管理</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
+    <script type="text/javascript">
+        function getXMLHttpRequest() {
+            var xmlhttp;
+            if (window.XMLHttpRequest) {
+                //目前主流浏览器
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                //ie 6  7
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            return xmlhttp;
+        }
+    </script>
 </head>
 <body>
 <article class="page-container">
-    <form class="form form-horizontal" id="form-company-add">
+    <form class="form form-horizontal" id="form-company-add" onsubmit="return addCompany()">
         <!--行业	公司名称	股票代码	股票名称-->
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>行业名称：</label>
@@ -72,43 +85,40 @@
 <script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>
 <script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
 <script type="text/javascript">
-    $(function () {
-        $("#form-company-add").validate({
-            rules: {
-                industry: {
-                    required: true,
-                },
-                cname: {
-                    required: true,
-                },
-                stockcode: {
-                    required: true,
-                },
-                stockname: {
-                    required: true,
-                },
-            },
-            onkeyup: false,
-            focusCleanup: true,
-            success: "valid",
-            submitHandler: function (form) {
-                $(form).ajaxSubmit({
-                    type: 'post',
-                    url: "/TestServlet",
-                    success: function (data) {
-                        layer.msg('添加成功!', {icon: 1, time: 1000});
-                    },
-                    error: function (XmlHttpRequest, textStatus, errorThrown) {
-                        layer.msg('error!', {icon: 1, time: 1000});
-                    }
-                });
-                var index = parent.layer.getFrameIndex(window.name);
-                window.parent.location.reload();//刷新父页面
-//                parent.$('.btn-refresh').click();
-                parent.layer.close(index);
+    function addCompany() {
+        var xmlhttp = getXMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                //4代表响应数据已经读取完毕。
+                //200代表代表读取的响应数据是一个成功的数据。
+                var str = xmlhttp.responseText;
+                if (str == "true") {
+                    layer.msg('添加成功!', {icon: 1, time: 1000});
+                    window.parent.location.reload();//刷新父页面
+                } else {
+                    layer.msg('error!', {icon: 1, time: 1000});
+                }
+                return false;
             }
-        });
-    });
+        };
+        //javascript请求的网址
+        var url = "/addCompany";
+        //打开连接
+        xmlhttp.open("post", url);
+        //设置请求信息的头
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //发送数据
+        var industry = document.getElementById("industry").value;
+        var cname = document.getElementById("cname").value;
+        var stockcode = document.getElementById("stockcode").value;
+        var stockname = document.getElementById("stockname").value;
+        xmlhttp.send("" +
+            "industry=" + industry +
+            "&cname=" + cname +
+            "&stockcode=" + stockcode +
+            "&stockname=" + stockname);
+        return false;
+    }
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
