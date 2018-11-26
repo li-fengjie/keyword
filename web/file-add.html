@@ -27,30 +27,20 @@
 <div class="page-container">
     <form class="form form-horizontal" id="form-article-add">
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文档标题：</label>
-            <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="" name="">
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类栏目：</label>
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文档所属公司：</label>
             <div class="formControls col-xs-8 col-sm-9">
 				<span class="select-box">
 				<select name="" class="select">
-					<option value="0">全部栏目</option>
-					<option value="1">新闻资讯</option>
-					<option value="11">├行业动态</option>
-					<option value="12">├行业资讯</option>
-					<option value="13">├行业新闻</option>
+					<option value="0">自动检测</option>
 				</select>
 				</span>
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-4 col-sm-2">允许评论：</label>
+            <label class="form-label col-xs-4 col-sm-2">自动检测公司：</label>
             <div class="formControls col-xs-8 col-sm-9 skin-minimal">
                 <div class="check-box">
-                    <input type="checkbox" id="checkbox-1">
+                    <input type="checkbox" id="checkbox-1" checked="true">
                     <label for="checkbox-1">&nbsp;</label>
                 </div>
             </div>
@@ -122,9 +112,10 @@
         var uploader = WebUploader.create({
             auto: true,
             swf: 'lib/webuploader/0.1.5/Uploader.swf',
-
+            timeout: 10000,
             // 文件接收服务端。
             server: '/upload',
+
 //            server: 'lib/webuploader/0.1.5/server/fileupload.php',
 
             // 选择文件的按钮。可选。
@@ -368,6 +359,7 @@
                 dnd: '#dndArea',
                 paste: '#uploader',
                 swf: 'lib/webuploader/0.1.5/Uploader.swf',
+                timeout: 10000,
                 chunked: false,
                 chunkSize: 512 * 1024,
                 server: '/upload',

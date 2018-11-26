@@ -1,6 +1,6 @@
 package xyz.hui_yi.keywords.bean;
 
-public class FilesBean {
+public class FileBean {
     private String d_id;
     private String filename;
     private String content;
@@ -49,7 +49,7 @@ public class FilesBean {
 
     @Override
     public String toString() {
-        return "FilesBean{" +
+        return "FileBean{" +
                 "d_id='" + d_id + '\'' +
                 ", filename='" + filename + '\'' +
                 ", content='" + content + '\'' +
