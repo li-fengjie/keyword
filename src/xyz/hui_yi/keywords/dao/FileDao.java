@@ -97,7 +97,7 @@ public class FileDao {
 	}
 
 
-	public FileBean selectFileBean(String d_id) {
+	public FileBean selectFileBean(int d_id) {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
 		String sql="select * from file_data where d_id=?";
 		try {
