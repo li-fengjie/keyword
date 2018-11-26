@@ -5,6 +5,7 @@ public class FileBean {
     private String filename;
     private String content;
     private String c_id;
+    private String stockname;
     private String dir;
 
     public String getD_id() {
@@ -47,6 +48,14 @@ public class FileBean {
         this.dir = dir;
     }
 
+    public String getStockname() {
+        return stockname;
+    }
+
+    public void setStockname(String stockname) {
+        this.stockname = stockname;
+    }
+
     @Override
     public String toString() {
         return "FileBean{" +
@@ -54,6 +63,7 @@ public class FileBean {
                 ", filename='" + filename + '\'' +
                 ", content='" + content + '\'' +
                 ", c_id='" + c_id + '\'' +
+                ", stockname='" + stockname + '\'' +
                 ", dir='" + dir + '\'' +
                 '}';
     }

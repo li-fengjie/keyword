@@ -36,7 +36,7 @@ public class CompanyDao {
 
 	public CompanyPageBean queryCompanyPageBean() {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
-		String sql="select * from company order by c_id desc";
+		String sql="select * from company order by c_id ";
 		CompanyPageBean CompanyPageBean=new CompanyPageBean();
 		try {
 			List<CompanyBean> CompanyBeans=qr.query(sql, new BeanListHandler<CompanyBean>(CompanyBean.class));

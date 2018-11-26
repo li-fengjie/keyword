@@ -47,7 +47,8 @@
                 t.row.add([
                     '<p align="center"><input name="" type="checkbox" value=""></p>',
                     '<p align="center">' + jsonArray[i]['d_id'] + '</p>',
-                    '<p align="center"><input type="text" class="input-text text-c" value="' + jsonArray[i]['filename'] + '"></p>',
+//                    '<p align="center"><input type="text" class="input-text text-c" value="' + jsonArray[i]['filename'] + '"></p>',
+                    '<p align="center">' + jsonArray[i]['stockname'] + '</p>',
                     '<p align="center">' + jsonArray[i]['filename'] + '</p>',
                     '<p align="center">' + jsonArray[i]['content'] + '</p>',
                     '<p align="center">' + '<a style="text-decoration:none" class="ml-5"\n' +
@@ -83,7 +84,7 @@
             <tr class="text-c">
                 <th width="25"><input type="checkbox" name="" value=""></th>
                 <th width="50">ID</th>
-                <th width="80">公司</th>
+                <th width="80">股票名称</th>
                 <th width="100">文件名</th>
                 <th>文件内容</th>
                 <th width="50">操作</th>
@@ -123,7 +124,8 @@
                     t.row.add([
                         '<p align="center"><input name="" type="checkbox" value=""></p>',
                         '<p align="center">' + jsonArray[i]['d_id'] + '</p>',
-                        '<p align="center"><input type="text" class="input-text text-c" value="' + jsonArray[i]['filename'] + '"></p>',
+//                        '<p align="center"><input type="text" class="input-text text-c" value="' + jsonArray[i]['filename'] + '"></p>',
+                        '<p align="center">' + jsonArray[i]['stockname'] + '</p>',
                         '<p align="center">' + jsonArray[i]['filename'] + '</p>',
                         '<p align="center">' + jsonArray[i]['content'] + '</p>',
                         '<p align="center">' + '<a style="text-decoration:none" class="ml-5"\n' +
