@@ -61,7 +61,7 @@ public class TypeTargetDao {
 		}
 	}
 //	(t_id,name)
-	public void updateTypeTargetBean(String t_id,String name) {
+	public void updateTypeTargetBean(int t_id,String name) {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
 		String sql="update type_target set name=? where t_id=?";
 		try {
