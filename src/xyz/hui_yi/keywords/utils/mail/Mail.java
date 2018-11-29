@@ -25,11 +25,11 @@ public class Mail {
 
     /**
      * 创建有附件的邮件对象
-     * @param from
-     * @param to
-     * @param subject
-     * @param content
-     * @param file
+     * @param from 发件人
+     * @param to 收件人
+     * @param subject 主题
+     * @param content 内容
+     * @param file 附件
      */
     public Mail(String from,String to,String subject,String content,File file,String fileName){
         this.from = from;

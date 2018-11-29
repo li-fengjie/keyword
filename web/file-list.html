@@ -37,6 +37,7 @@
     <script type="text/javascript">
         var jsonArray;
         var length;
+        var pageNum;
         window.onload = function () {
             loadFileData();
         }
@@ -58,7 +59,7 @@
                     '' + '</p>'
                 ]).draw();
             }
-            if(l + 300 >= length){
+            if (l + 300 >= length) {
                 document.getElementById("pageNum").innerHTML = "共有数据：<strong>" + pageNum + "</strong> 条";
             }
             if (l + 100 < length) {
@@ -77,7 +78,7 @@
 <div class="page-container">
     <div class="cl pd-5 bg-1 bk-gray mt-20"><span class="l"><a href="javascript:;" onclick="datadel()"
                                                                class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a></span>
-        <span class="r" id="pageNum">共有数据：<strong>0</strong> 条</span></div>
+        <span class="r" id="pageNum">正在加载......<div style="height: 40px" class="loading"></div></span></div>
     <div class="mt-20">
         <table class="table table-border table-bordered table-bg table-sort" id="dataTable">
             <thead>
@@ -116,8 +117,8 @@
                 var str = xmlhttp.responseText;
                 var jsonObject = JSON.parse(str);
                 jsonArray = jsonObject['fileBeans'];
-                var pageNum = jsonObject['pageSum'];
-                document.getElementById("pageNum").innerHTML = "共有数据：<strong>" + pageNum + "</strong> 条";
+                pageNum = jsonObject['pageSum'];
+//                document.getElementById("pageNum").innerHTML = "共有数据：<strong>" + pageNum + "</strong> 条";
                 length = jsonArray.length;
                 var l = (length > 100) ? 100 : length;
                 for (var i = 0; i < l; i++) {
@@ -135,9 +136,9 @@
                         '' + '</p>'
                     ]).draw();
                 }
-                if(l >= length){
+                if (l >= length) {
                     document.getElementById("pageNum").innerHTML = "共有数据：<strong>" + pageNum + "</strong> 条";
-                }else {
+                } else {
                     setTimeout('loadData(100)', 1000); //延迟1秒
                 }
                 return false;

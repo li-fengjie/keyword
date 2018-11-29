@@ -1,6 +1,5 @@
 package xyz.hui_yi.keywords.utils.mail;
 
-import xyz.hui_yi.keywords.utils.mail.Mail;
 
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -56,12 +55,10 @@ public class MailUtils {
             mimeBodyPart1.attachFile(mail.getFile());
             mimeBodyPart1.setFileName(MimeUtility.decodeText(mail.getFileName()));
             multipart.addBodyPart(mimeBodyPart1);
-            Transport.send(message);
+            message.setContent(multipart);
         }else {
             message.setContent(mail.getContent(),"text/html;charset=utf-8");
         }
         Transport.send(message);
-
-
     }
 }

@@ -10,7 +10,7 @@ import java.util.Map;
  * @author Li-Fengjie
  *
  */
-public class example1 {
+public class TextRank4KeywordDemo {
     public static void main(String[] args) {
         String fileName = "src/test/doc/01.txt";
         Map<String, String> keyWords;

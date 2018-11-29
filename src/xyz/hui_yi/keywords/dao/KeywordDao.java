@@ -36,7 +36,7 @@ public class KeywordDao {
 
 	public KeywordPageBean queryKeywordPageBean(int t_id) {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
-		String sql="select * from keywords where t_id=? order by k_id";
+		String sql="select * from keywords where t_id=? order by k_id desc";
 		KeywordPageBean keywordPageBean=new KeywordPageBean();
 		try {
 			List<KeywordBean> KeywordBeans=qr.query(sql, new BeanListHandler<KeywordBean>(KeywordBean.class),t_id);

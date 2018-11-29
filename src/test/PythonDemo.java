@@ -4,7 +4,7 @@ import org.python.util.PythonInterpreter;
 
 import java.io.*;
 
-public class Test2 {
+public class PythonDemo {
     public static void main(String args[]) throws IOException {
         PythonInterpreter interpreter = new PythonInterpreter();
         InputStream filepy = new FileInputStream("D:\\pdf\\__init__.py");

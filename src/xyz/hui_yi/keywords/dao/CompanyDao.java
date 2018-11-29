@@ -36,7 +36,7 @@ public class CompanyDao {
 
 	public CompanyPageBean queryCompanyPageBean() {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
-		String sql="select * from company order by c_id ";
+		String sql="select * from company order by c_id desc";
 		CompanyPageBean CompanyPageBean=new CompanyPageBean();
 		try {
 			List<CompanyBean> CompanyBeans=qr.query(sql, new BeanListHandler<CompanyBean>(CompanyBean.class));
@@ -66,6 +66,17 @@ public class CompanyDao {
 		String sql="update company set cname=?,industry=?,stockcode=?,stockname=?,state=? where c_id=?";
 		try {
 			qr.update(sql,cname,industry,stockcode,stockname,c_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	//(c_id,stockcode)
+	public void updateCompanyBean(String c_id,String stockcode) {
+		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
+		String sql="update company set stockcode=? where c_id=?";
+		try {
+			qr.update(sql,stockcode,c_id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
