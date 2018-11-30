@@ -13,6 +13,7 @@ public class C3P0Utils {
 		return dataSource;
 		
 	}
+
 	public static Connection getConnection() {
 		try {
 			return dataSource.getConnection();
@@ -21,5 +22,4 @@ public class C3P0Utils {
 		}
 		
 	}
-	
 }

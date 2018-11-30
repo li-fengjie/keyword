@@ -4,7 +4,6 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import xyz.hui_yi.keywords.bean.CompanyBean;
 import xyz.hui_yi.keywords.bean.CompanyPageBean;
-import xyz.hui_yi.keywords.bean.FileBean;
 import xyz.hui_yi.keywords.dao.CompanyDao;
 import xyz.hui_yi.keywords.dao.FileDao;
 import xyz.hui_yi.keywords.utils.commons.CommonsUtils;
@@ -17,7 +16,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
 
-public class JsonpGetPDF {
+public class JsonpGetPDF2 {
     public static void main(String[] args) throws IOException {
 //        String url = "https://xueqiu.com/statuses/stock_timeline.json?" +
 //                "count=20" +
@@ -32,16 +31,17 @@ public class JsonpGetPDF {
         FileDao fileDao = new FileDao();
         CompanyPageBean companyPageBean = companyDao.queryCompanyPageBean();
         List<CompanyBean> companyBeans = companyPageBean.getCompanyBeans();
-        for (CompanyBean c : companyBeans) {
+        for (int k = companyBeans.size() - 1; k > 0; k--) {
             try {
-                if(Integer.parseInt(c.getC_id()) > 6254){
-                    continue;
-                }
+                CompanyBean c = companyBeans.get(k);
                 if(c.getState() != null && c.getState().equals("1")){
                     continue;
                 }
-                System.out.println("第" + c.getC_id());
+                if(Integer.parseInt(c.getC_id()) > 6258){
+                    continue;
+                }
                 companyDao.stopCompanyBean(Integer.parseInt(c.getC_id()));
+                System.out.println("第" + c.getC_id());
                 String stockcode = c.getStockcode();
                 String url = "https://xueqiu.com/statuses/stock_timeline.json?" +
                         "count=20" +
@@ -74,7 +74,8 @@ public class JsonpGetPDF {
                     }
                 }
             } catch (Exception e) {
-                System.out.println(e);
+                e.printStackTrace();
+//                break;
                 continue;
             }
 
@@ -124,7 +125,7 @@ public class JsonpGetPDF {
         while ((line = br.readLine()) != null) {
             sb.append(line);
         }
-        System.out.println("请求响应结果：" + sb);
+//        System.out.println("请求响应结果：" + sb);
         return sb.toString();
     }
 
