@@ -69,6 +69,7 @@ public class Pdf2String {
             stripper.setStartPage(1);
             stripper.setEndPage(pages);
             String content = stripper.getText(document);
+            document.close();
             return content;
         } catch(Exception e)
         {

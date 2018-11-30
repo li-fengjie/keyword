@@ -84,7 +84,8 @@ public class UploadServlet extends HttpServlet {
                 List<CompanyBean> companyBeans = companyPageBean.getCompanyBeans();
                 for (CompanyBean companyBean:companyBeans) {
                     //如果包含公司的名字/股票代码/股票名称 就认为是该公司
-                    if(companyBean.getName() != null && CountWord.isContainWord(content,companyBean.getName())){
+                    if(companyBean.getName() != null && CountWord.isContainWord(saveName,companyBean.getName())
+                    || CountWord.isContainWord(content,companyBean.getName())){
                         c_id = companyBean.getC_id();
                         System.out.println(c_id + companyBean.getName());
                         break;
