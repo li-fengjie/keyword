@@ -17,6 +17,9 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
 
+/**
+ * 获取雪球年报pdf文档
+ */
 public class JsonpGetPDF {
     public static void main(String[] args) throws IOException {
 //        String url = "https://xueqiu.com/statuses/stock_timeline.json?" +
