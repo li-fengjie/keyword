@@ -24,10 +24,9 @@ public class FileDao {
 			FilePageBean.setPageNo(pageno);
 			FilePageBean.setPageSize(pagesize);
 			FilePageBean.setFileBeans(FileBeans);
-			Object object=qr.query("select count(*) from file_data", new ScalarHandler());
+			Object object=qr.query("select count(d_id) from file_data", new ScalarHandler());
 			long num=(Long)object;
-
-			num=num/pagesize+(num%pagesize==0?0:1);
+//			num=num/pagesize+(num%pagesize==0?0:1);
 			FilePageBean.setPageSum(num);
 			return FilePageBean;
 		} catch (SQLException e) {
@@ -38,7 +37,7 @@ public class FileDao {
 
 	public FilePageBean queryFilePageBean() {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
-		String sql="select * from file_data  order by d_id desc";
+		String sql="select * from file_data order by d_id desc";
 		FilePageBean FilePageBean=new FilePageBean();
 		try {
 			List<FileBean> FileBeans=qr.query(sql, new BeanListHandler<FileBean>(FileBean.class));
