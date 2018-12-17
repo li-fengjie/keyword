@@ -41,4 +41,21 @@ public class PropertiesUtil {
 		System.out.println("获取修改后的属性值：" + key + "=" + prop.getProperty(key));
 		return true;
 	}
+
+	public static String getProperty(String path,String key){
+        Properties prop = new Properties();// 属性集合对象
+        FileInputStream fis;
+        try {
+            fis = new FileInputStream(path);
+            prop.load(fis);// 将属性文件流装载到Properties对象中
+            fis.close();// 关闭流
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return prop.getProperty(key);
+    }
 }

@@ -47,25 +47,25 @@
                 <div class="row cl">
                     <label class="form-label col-xs-4 col-sm-2">SMTP服务器：</label>
                     <div class="formControls col-xs-8 col-sm-9">
-                        <input type="text" id="" value="" class="input-text">
+                        <input type="text" id="host" value="smtp.163.com" class="input-text">
                     </div>
                 </div>
                 <div class="row cl">
                     <label class="form-label col-xs-4 col-sm-2">邮箱帐号：</label>
                     <div class="formControls col-xs-8 col-sm-9">
-                        <input type="text" class="input-text" value="5" id="emailName" name="emailName">
+                        <input type="text" class="input-text" value="bosscoming@163.com" id="from" name="emailName">
                     </div>
                 </div>
                 <div class="row cl">
                     <label class="form-label col-xs-4 col-sm-2">邮箱密码：</label>
                     <div class="formControls col-xs-8 col-sm-9">
-                        <input type="password" id="email-password" value="" class="input-text">
+                        <input type="password" id="email-password" value="********" class="input-text">
                     </div>
                 </div>
                 <div class="row cl">
                     <label class="form-label col-xs-4 col-sm-2">收件邮箱地址：</label>
                     <div class="formControls col-xs-8 col-sm-9">
-                        <input type="text" id="email-address" value="" class="input-text">
+                        <input type="text" id="to" value="" class="input-text">
                     </div>
                 </div>
             </div>
@@ -107,6 +107,48 @@
             index: 0
         });
     });
+</script>
+<script type="text/javascript">
+    function getXMLHttpRequest() {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            //目前主流浏览器
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            //ie 6  7
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        return xmlhttp;
+    }
+</script>
+<script type="text/javascript">
+    window.onload = function () {
+        getEmailInfo();
+    }
+
+    function getEmailInfo() {
+        var xmlhttp = getXMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                //4代表响应数据已经读取完毕。
+                //200代表代表读取的响应数据是一个成功的数据。
+                var str = xmlhttp.responseText;
+                var jsonObject = JSON.parse(str);
+                document.getElementById("host").value = jsonObject['host'];
+                document.getElementById("from").value = jsonObject['from'];
+                document.getElementById("to").value = jsonObject['to'];
+                return false;
+            }
+        };
+        //javascript请求的网址
+        var url = "/emailInfo";
+        //打开连接
+        xmlhttp.open("GET", url, false);
+        //设置请求信息的头
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send(null);
+        return false;
+    }
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
