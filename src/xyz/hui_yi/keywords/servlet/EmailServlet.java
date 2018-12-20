@@ -19,9 +19,9 @@ public class EmailServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setHeader("Content-type", "text/html;charset=utf-8");
-        String filePath=this.getServletConfig().getServletContext().getRealPath("/WEB-INF");
-        System.out.println(filePath);
-        String path = filePath + "/email_template.properties";
+        String strPath = this.getClass().getClassLoader().getResource("").getPath();
+        System.out.println(strPath);
+        String path = strPath + "/email_template.properties";
         String host = PropertiesUtil.getProperty(path,"host");
         String to = PropertiesUtil.getProperty(path,"to");
         String from = PropertiesUtil.getProperty(path,"from");

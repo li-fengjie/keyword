@@ -59,7 +59,7 @@
                 <div class="row cl">
                     <label class="form-label col-xs-4 col-sm-2">邮箱密码：</label>
                     <div class="formControls col-xs-8 col-sm-9">
-                        <input type="password" id="email-password" value="********" class="input-text">
+                        <input type="password" id="password" value="" class="input-text">
                     </div>
                 </div>
                 <div class="row cl">
@@ -74,7 +74,7 @@
         </div>
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i
+                <button onClick="email_save_submit();" class="btn btn-primary radius" type="submit"><i
                         class="Hui-iconfont">&#xe632;</i> 保存
                 </button>
                 <button onClick="layer_close();" class="btn btn-default radius" type="button">
@@ -147,6 +147,36 @@
         //设置请求信息的头
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlhttp.send(null);
+        return false;
+    }
+</script>
+<script type="text/javascript">
+    function email_save_submit(){
+        var xmlhttp = getXMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                //4代表响应数据已经读取完毕。
+                //200代表代表读取的响应数据是一个成功的数据。
+                var str = xmlhttp.responseText;
+                if(str == "success"){
+                    layer.msg('修改成功!', {icon: 1, time: 1000});
+                }else {
+                    layer.msg(str, {icon: 1, time: 1000});
+                }
+                return false;
+            }
+        };
+        //javascript请求的网址
+        var url = "/updateEmailInfo";
+        //打开连接
+        xmlhttp.open("POST", url, false);
+        //设置请求信息的头
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        var host = document.getElementById("host").value;
+        var from = document.getElementById("from").value;
+        var to = document.getElementById("to").value;
+        var password = document.getElementById("password").value;
+        xmlhttp.send("host=" + host + "&from=" + from + "&to="+ to + "&password=" + password);
         return false;
     }
 </script>
