@@ -51,74 +51,75 @@ public class AnalysisDao {
 		return null;
 	}
 
-	public void insertToAnalysisBean(String c_id,String cname,String industry,String stockcode,String stockname,int state) {
+	public void insertToAnalysisBean(String starttime,int state) {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
-		String sql="insert into result(c_id,cname,industry,stockcode,stockname,state) values(?,?,?,?,?,?)";
+		String sql="insert into result(r_id,starttime,state) values(?,?,?)";
 		try {
-			qr.update(sql,c_id,cname,industry,stockcode,stockname,state);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-//(c_id,cname,industry,stockcode,stockname,state)
-	public void updateAnalysisBean(String c_id,String cname,String industry,String stockcode,String stockname,int state) {
-		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
-		String sql="update result set cname=?,industry=?,stockcode=?,stockname=?,state=? where c_id=?";
-		try {
-			qr.update(sql,cname,industry,stockcode,stockname,c_id);
+			qr.update(sql,null,starttime,state);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	//(c_id,stockcode)
-	public void updateAnalysisBean(String c_id,String stockcode) {
+//(r_id,cname,industry,stockcode,stockname,state)
+	public void updateAnalysisBean(String r_id,String cname,String industry,String stockcode,String stockname,int state) {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
-		String sql="update result set stockcode=? where c_id=?";
+		String sql="update result set cname=?,industry=?,stockcode=?,stockname=?,state=? where r_id=?";
 		try {
-			qr.update(sql,stockcode,c_id);
+			qr.update(sql,cname,industry,stockcode,stockname,r_id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void startAnalysisBean(int c_id) {
+	//(r_id,stockcode)
+	public void updateAnalysisBean(String r_id,String stockcode) {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
-		String sql="update result set state=? where c_id=?";
+		String sql="update result set stockcode=? where r_id=?";
 		try {
-			qr.update(sql,0,c_id);
+			qr.update(sql,stockcode,r_id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-    public void stopAnalysisBean(int c_id) {
+	public void startAnalysisBean(int r_id) {
+		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
+		String sql="update result set state=? where r_id=?";
+		try {
+			qr.update(sql,0,r_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+    public void stopAnalysisBean(int r_id) {
         QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
-        String sql="update result set state=? where c_id=?";
+        String sql="update result set state=? where r_id=?";
         try {
-            qr.update(sql,1,c_id);
+            qr.update(sql,1,r_id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-	public void deleteAnalysisBean(int c_id) {
+	public void deleteAnalysisBean(int r_id) {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
-		String sql="delete from result where c_id=?";
+		String sql="delete from result where r_id=?";
 		try {
-			qr.update(sql,c_id);
+			qr.update(sql,r_id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
 
-	public AnalysisBean selectAnalysisBean(String c_id) {
+	public String selectAnalysisBean(String starttime) {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
-		String sql="select * from result where c_id=?";
+		String sql="select * from result where starttime=?";
 		try {
-			AnalysisBean AnalysisBeans = qr.query(sql, new BeanHandler<AnalysisBean>(AnalysisBean.class),c_id);
-			return AnalysisBeans;
+			AnalysisBean AnalysisBean = qr.query(sql, new BeanHandler<AnalysisBean>(AnalysisBean.class),starttime);
+			return AnalysisBean.getR_id();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
