@@ -37,9 +37,6 @@ public class JsonpGetPDF3 {
                 if(c.getState() != null && c.getState().equals("1")){
                     continue;
                 }
-                if(Integer.parseInt(c.getC_id()) > 6258){
-                    continue;
-                }
                 companyDao.stopCompanyBean(Integer.parseInt(c.getC_id()));
                 System.out.println("第" + c.getC_id());
                 String stockcode = c.getStockcode();

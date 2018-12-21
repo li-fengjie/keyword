@@ -28,7 +28,7 @@ public class JsonpGetPDF {
 //                "&page=1" +
 //                "&symbol_id=SH600556";
         String fileDir = "D:\\文件\\项目文档\\关键词\\pdf";
-        String cookie = "aliyungf_tc=AQAAALYzAl40CQ0AKk60Pf0rWFfyxvWF; device_id=dd7c108c19ce824d4cf4af50d0ddd9db; _ga=GA1.2.247964988.1542345374; __utmc=1; xq_a_token=6125633fe86dec75d9edcd37ac089d8aed148b9e; xq_a_token.sig=CKaeIxP0OqcHQf2b4XOfUg-gXv0; xq_r_token=335505f8d6608a9d9fa932c981d547ad9336e2b5; xq_r_token.sig=i9gZwKtoEEpsL9Ck0G7yUGU42LY; u=891543482395923; Hm_lvt_1db88642e346389874251b5a1eded6e3=1542345430,1542961268,1542962201,1543482396; _gid=GA1.2.1578910268.1543482396; Hm_lpvt_1db88642e346389874251b5a1eded6e3=1543486945; __utma=1.247964988.1542345374.1543486946.1543486946.1; __utmz=1.1543486946.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmt=1; __utmb=1.1.10.154348694";
+        String cookie ="device_id=dd7c108c19ce824d4cf4af50d0ddd9db; _ga=GA1.2.247964988.1542345374; Hm_lvt_1db88642e346389874251b5a1eded6e3=1542961268,1542962201,1543482396; _gid=GA1.2.422369450.1545316373; xq_a_token=663059f1a494115c0dfac8bc11acf01c72ca2407; xq_a_token.sig=dnGkJ3pgM6zGvDwI8aPmcRuWcjk; xq_r_token=d6cf388d8a883c161910ce23151c244332e73959; xq_r_token.sig=eqyxteFffPXoFVmB8uAIMgtmh9Q; u=271545367213255; Hm_lpvt_1db88642e346389874251b5a1eded6e3=1545372964";
         String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36";
 
         CompanyDao companyDao = new CompanyDao();
@@ -37,9 +37,6 @@ public class JsonpGetPDF {
         List<CompanyBean> companyBeans = companyPageBean.getCompanyBeans();
         for (CompanyBean c : companyBeans) {
             try {
-                if(Integer.parseInt(c.getC_id()) > 6254){
-                    continue;
-                }
                 if(c.getState() != null && c.getState().equals("1")){
                     continue;
                 }
