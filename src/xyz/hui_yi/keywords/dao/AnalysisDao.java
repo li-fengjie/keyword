@@ -61,23 +61,11 @@ public class AnalysisDao {
 		}
 	}
 
-//(r_id,cname,industry,stockcode,stockname,state)
-	public void updateAnalysisBean(String r_id,String cname,String industry,String stockcode,String stockname,int state) {
+	public void updateAnalysisBean(int r_id,String endtime,int state) {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
-		String sql="update result set cname=?,industry=?,stockcode=?,stockname=?,state=? where r_id=?";
+		String sql="update result set state=?,endtime=? where r_id=?";
 		try {
-			qr.update(sql,cname,industry,stockcode,stockname,r_id);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	//(r_id,stockcode)
-	public void updateAnalysisBean(String r_id,String stockcode) {
-		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
-		String sql="update result set stockcode=? where r_id=?";
-		try {
-			qr.update(sql,stockcode,r_id);
+			qr.update(sql,state,endtime,r_id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -114,7 +102,7 @@ public class AnalysisDao {
 	}
 
 
-	public String selectAnalysisBean(String starttime) {
+	public int selectAnalysisBean(String starttime) {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
 		String sql="select * from result where starttime=?";
 		try {
@@ -123,6 +111,6 @@ public class AnalysisDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return -1;
 	}
 }

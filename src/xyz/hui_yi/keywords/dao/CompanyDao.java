@@ -113,7 +113,7 @@ public class CompanyDao {
 	}
 
 
-	public CompanyBean selectCompanyBean(String c_id) {
+	public CompanyBean selectCompanyBean(int c_id) {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
 		String sql="select * from company where c_id=?";
 		try {

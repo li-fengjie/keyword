@@ -20,14 +20,15 @@ public class FileDao {
 		String sql="select * from file_data limit ?,?";
 		FilePageBean FilePageBean=new FilePageBean();
 		try {
-			List<FileBean> FileBeans=qr.query(sql, new BeanListHandler<FileBean>(FileBean.class),(pageno-1)*pagesize,pagesize);
-			FilePageBean.setPageNo(pageno);
-			FilePageBean.setPageSize(pagesize);
-			FilePageBean.setFileBeans(FileBeans);
 			Object object=qr.query("select count(d_id) from file_data", new ScalarHandler());
 			long num=(Long)object;
 //			num=num/pagesize+(num%pagesize==0?0:1);
 			FilePageBean.setPageSum(num);
+			List<FileBean> FileBeans=qr.query(sql, new BeanListHandler<FileBean>(FileBean.class),(pageno-1)*pagesize,pagesize);
+			FilePageBean.setPageNo(pageno);
+			FilePageBean.setPageSize(pagesize);
+			FilePageBean.setFileBeans(FileBeans);
+
 			return FilePageBean;
 		} catch (SQLException e) {
 			e.printStackTrace();

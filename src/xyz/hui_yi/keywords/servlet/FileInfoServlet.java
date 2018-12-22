@@ -30,7 +30,7 @@ public class FileInfoServlet extends HttpServlet {
 		FilePageBean fileBeans =fileDao.queryFilePageBean(1,100);
 		List<FileBean> list = fileBeans.getFileBeans();
 		for (int i = 0; i < list.size(); i++) {
-		    if(list.get(i).getC_id() != null){
+		    if(list.get(i).getC_id() != -1){
                 CompanyBean companyBean = companyDao.selectCompanyBean(list.get(i).getC_id());
                 System.out.println(companyBean.getStockname());
                 list.get(i).setStockname(companyBean.getStockname());

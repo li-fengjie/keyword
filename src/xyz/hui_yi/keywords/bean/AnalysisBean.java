@@ -1,16 +1,16 @@
 package xyz.hui_yi.keywords.bean;
 
 public class AnalysisBean {
-    private String r_id;
+    private int r_id;
     private String starttime;
     private String endtime;
     private String state;
 
-    public String getR_id() {
+    public int getR_id() {
         return r_id;
     }
 
-    public void setR_id(String r_id) {
+    public void setR_id(int r_id) {
         this.r_id = r_id;
     }
 

@@ -1,18 +1,18 @@
 package xyz.hui_yi.keywords.bean;
 
 public class FileBean {
-    private String d_id;
+    private int d_id;
     private String filename;
     private String content;
-    private String c_id;
+    private int c_id;
     private String stockname;
     private String dir;
 
-    public String getD_id() {
+    public int getD_id() {
         return d_id;
     }
 
-    public void setD_id(String d_id) {
+    public void setD_id(int d_id) {
         this.d_id = d_id;
     }
 
@@ -32,11 +32,11 @@ public class FileBean {
         this.content = content;
     }
 
-    public String getC_id() {
+    public int getC_id() {
         return c_id;
     }
 
-    public void setC_id(String c_id) {
+    public void setC_id(int c_id) {
         this.c_id = c_id;
     }
 
