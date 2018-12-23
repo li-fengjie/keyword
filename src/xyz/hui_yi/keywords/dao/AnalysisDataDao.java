@@ -39,4 +39,16 @@ public class AnalysisDataDao {
 		}
 		return -1;
 	}
+
+	public List<AnalysisDataBean> selectAnalysisDataBean(int r_id) {
+		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
+		String sql="select * from result_data where r_id=?";
+		try {
+			List<AnalysisDataBean> analysisDataBeans= qr.query(sql, new BeanListHandler<AnalysisDataBean>(AnalysisDataBean.class),r_id);
+			return analysisDataBeans;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

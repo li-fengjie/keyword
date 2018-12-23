@@ -71,7 +71,7 @@ public class KeywordDao {
 		}
 	}
 
-	public KeywordBean selectKeywordBean(String k_id) {
+	public KeywordBean selectKeywordBean(int k_id) {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
 		String sql="select * from keywords where k_id=?";
 		try {

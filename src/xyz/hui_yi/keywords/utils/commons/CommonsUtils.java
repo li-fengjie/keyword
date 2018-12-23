@@ -1,8 +1,11 @@
 package xyz.hui_yi.keywords.utils.commons;
 
+import xyz.hui_yi.keywords.bean.ResultBean;
+
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 public class CommonsUtils {
@@ -23,6 +26,7 @@ public class CommonsUtils {
     public static String getFormatTimestamp(){
         return timeFormat(new Timestamp(new Date().getTime())).toString();
     }
+
     /**
      * @param timestamp
      * @return

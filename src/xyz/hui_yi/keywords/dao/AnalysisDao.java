@@ -106,11 +106,35 @@ public class AnalysisDao {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
 		String sql="select * from result where starttime=?";
 		try {
-			AnalysisBean AnalysisBean = qr.query(sql, new BeanHandler<AnalysisBean>(AnalysisBean.class),starttime);
-			return AnalysisBean.getR_id();
+			AnalysisBean analysisBean = qr.query(sql, new BeanHandler<AnalysisBean>(AnalysisBean.class),starttime);
+			return analysisBean.getR_id();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return -1;
 	}
+
+    public int selectAnalysisState(int r_id) {
+        QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
+        String sql="select * from result where r_id=?";
+        try {
+            AnalysisBean analysisBean = qr.query(sql, new BeanHandler<AnalysisBean>(AnalysisBean.class),r_id);
+            return analysisBean.getState();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    public AnalysisBean selectAnalysisBean(int r_id) {
+        QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
+        String sql="select * from result where r_id=?";
+        try {
+            AnalysisBean analysisBean = qr.query(sql, new BeanHandler<AnalysisBean>(AnalysisBean.class),r_id);
+            return analysisBean;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

@@ -26,7 +26,7 @@ public class AddAnalysisServlet extends HttpServlet {
     private AnalysisDataDao analysisDataDao = new AnalysisDataDao();
     private TypeTargetDao typeTargetDao= new TypeTargetDao();
     private KeywordDao keywordDao = new KeywordDao();
-
+    private static final int PAGE_SIZE = 100;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
 //        java.sql.Timestamp timestamp = CommonsUtils.getTimestamp();
@@ -40,7 +40,7 @@ public class AddAnalysisServlet extends HttpServlet {
         TypeTargetPageBean typeTargetPageBean = typeTargetDao.queryTypeTargetPageBean();
         List<TypeTargetBean> typeTargetBeans = typeTargetPageBean.getTypeTargetBeans();
 
-        FilePageBean filePageBean  = fileDao.queryFilePageBean(1,50);
+        FilePageBean filePageBean  = fileDao.queryFilePageBean(1,PAGE_SIZE);
         List<FileBean> fileBeans = filePageBean.getFileBeans();
         for (FileBean f: fileBeans
              ) {
@@ -62,9 +62,8 @@ public class AddAnalysisServlet extends HttpServlet {
         }
 
         long sum = filePageBean.getPageSum();
-
         for(int i = 2;i  <= sum; i++){
-            filePageBean  = fileDao.queryFilePageBean(i,50);
+            filePageBean  = fileDao.queryFilePageBean(i,PAGE_SIZE);
             sum = filePageBean.getPageSum();
             fileBeans = filePageBean.getFileBeans();
             for (FileBean f: fileBeans
@@ -88,9 +87,10 @@ public class AddAnalysisServlet extends HttpServlet {
                 }
             }
         }
+        //统计结束 添加结束时间 改变状态
         String endtime = CommonsUtils.getFormatTimestamp();
         analysisDao.updateAnalysisBean(r_id,endtime,0);
-
+        //TODO 发送邮箱
         response.setCharacterEncoding("UTF-8");
         response.getWriter().print("true");
     }

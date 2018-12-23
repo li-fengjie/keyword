@@ -81,7 +81,7 @@ public class TypeTargetDao {
 		}
 	}
 
-	public TypeTargetBean selectTypeTargetBean(String t_id) {
+	public TypeTargetBean selectTypeTargetBean(int t_id) {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
 		String sql="select * from type_target where t_id=?";
 		try {

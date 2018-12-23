@@ -10,11 +10,11 @@
     <property name="maxIdleTime">30</property>
     <property name="maxPoolSize">100</property>
     <property name="minPoolSize">10</property>
-    <property name="maxStatements">200</property>
+    <property name="maxStatements">400</property>
 
     <user-overrides user="test-user">
-      <property name="maxPoolSize">10</property>
-      <property name="minPoolSize">1</property>
+      <property name="maxPoolSize">50</property>
+      <property name="minPoolSize">5</property>
       <property name="maxStatements">0</property>
     </user-overrides>
 
