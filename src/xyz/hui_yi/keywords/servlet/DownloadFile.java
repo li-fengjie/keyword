@@ -30,47 +30,53 @@ import java.util.List;
 @WebServlet("/downloadFile")
 public class DownloadFile extends HttpServlet {
     private AnalysisDao analysisDao = new AnalysisDao();
-    private AnalysisDataDao analysisDataDao = new AnalysisDataDao();
-    private CompanyDao companyDao = new CompanyDao();
-    private KeywordDao keywordDao = new KeywordDao();
-    private TypeTargetDao typeTargetDao = new TypeTargetDao();
+    private AimsResultDao aimsResultDao = new AimsResultDao();
+
+//    private AnalysisDataDao analysisDataDao = new AnalysisDataDao();
+//    private CompanyDao companyDao = new CompanyDao();
+//    private KeywordDao keywordDao = new KeywordDao();
+//    private TypeTargetDao typeTargetDao = new TypeTargetDao();
     private List<ResultBean> resultBeans = new ArrayList<>();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String root = this.getServletContext().getRealPath("/WEB-INF/excelFiles");
         String r_id = request.getParameter("r_id");
         if(r_id == null || r_id.equals("")){
+            response.setHeader("Content-type", "text/html;charset=utf-8");
             response.getWriter().println("参数不得为空!");
             return;
         }
         AnalysisBean analysisBean = analysisDao.selectAnalysisBean(Integer.parseInt(r_id));
-        List<AnalysisDataBean> analysisDataBeans = analysisDataDao.selectAnalysisDataBean(Integer.parseInt(r_id));
-        for(int i = 0; i < analysisDataBeans.size(); i++){
-            AnalysisDataBean analysisDataBean = analysisDataBeans.get(i);
-            int c_id = analysisDataBean.getC_id();
-            int k_id = analysisDataBean.getK_id();
-            int count = analysisDataBean.getCount();
-            int d_id = analysisDataBean.getD_id();
-            CompanyBean companyBean = companyDao.selectCompanyBean(c_id);
-            KeywordBean keywordBean = keywordDao.selectKeywordBean(k_id);
-            int t_id = keywordBean.getT_id();
-            TypeTargetBean typeTargetBean = typeTargetDao.selectTypeTargetBean(t_id);
-            String typename = typeTargetBean.getName();
+//        List<AnalysisDataBean> analysisDataBeans = analysisDataDao.selectAnalysisDataBean(Integer.parseInt(r_id));
+//        for(int i = 0; i < analysisDataBeans.size(); i++){
+//            AnalysisDataBean analysisDataBean = analysisDataBeans.get(i);
+//            int c_id = analysisDataBean.getC_id();
+//            int k_id = analysisDataBean.getK_id();
+//            int count = analysisDataBean.getCount();
+//            int d_id = analysisDataBean.getD_id();
+//            CompanyBean companyBean = companyDao.selectCompanyBean(c_id);
+//            KeywordBean keywordBean = keywordDao.selectKeywordBean(k_id);
+//            int t_id = keywordBean.getT_id();
+//            TypeTargetBean typeTargetBean = typeTargetDao.selectTypeTargetBean(t_id);
+//            String typename = typeTargetBean.getName();
+//
+//            //初始化ResultBean
+//            ResultBean resultBean = new ResultBean();
+//            companyDao.selectCompanyBean(analysisDataBean.getC_id());
+//            resultBean.setIndustry(companyBean.getIndustry());
+//            resultBean.setStockname(companyBean.getStockname());
+//            resultBean.setStockcode(companyBean.getStockcode());
+//            resultBean.setTypename(typename);
+//            resultBean.setCount(count);
+//            //添加数据
+//            resultBeans.add(resultBean);
+//        }
 
-            //初始化ResultBean
-            ResultBean resultBean = new ResultBean();
-            companyDao.selectCompanyBean(analysisDataBean.getC_id());
-            resultBean.setIndustry(companyBean.getIndustry());
-            resultBean.setStockname(companyBean.getStockname());
-            resultBean.setStockcode(companyBean.getStockcode());
-            resultBean.setTypename(typename);
-            resultBean.setCount(count);
-            //添加数据
-            resultBeans.add(resultBean);
-        }
 
+        resultBeans = aimsResultDao.selectAimDataBean(Integer.parseInt(r_id));
         JSONArray jsonArray = JSONArray.fromObject(resultBeans);
         System.out.println(jsonArray);
-
+        //是否在分析中
+        int state = analysisDao.selectAnalysisState(Integer.parseInt(r_id));
 
         String starttime = analysisBean.getStarttime();
         starttime = starttime.replaceAll(":",".");
@@ -84,7 +90,9 @@ public class DownloadFile extends HttpServlet {
         System.out.println(fileDir);
         String filename = "关键词分析结果"+starttime+".xls";
         File file = new File(fileDir);
-        if(!file.exists()){
+
+        //是否分析过 || 是否分析完成，
+        if(!file.exists() || state != 0){
             JSON2ExcelUtils.JSON2Excel(jsonArray,fileDir);
         }
         /*

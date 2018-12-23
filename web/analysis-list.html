@@ -92,7 +92,7 @@
         "bProcessing": true,
         "aoColumnDefs": [
             //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-            {"orderable": false, "aTargets": [0,5]}// 制定列不参与排序
+            {"orderable": false, "aTargets": [0, 5]}// 制定列不参与排序
         ]
     });
 
@@ -122,13 +122,12 @@
                         (jsonArray[i]['state'] === "" || jsonArray[i]['state'] === "0" || jsonArray[i]['state'] === 0) ?
                             '<p align="center" class="td-manage"><a style="text-decoration:none" onClick="analysis_stop(this,\'' + jsonArray[i]['r_id'] +
                             '\')" href="javascript:;"\n' +
-                            '                                     title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="下载报表"\n' +
-                            '                                                                                            href="javascript:;"\n' +
-                            '                                                                                            onclick="analysis_edit(\'分析下载报表\',\'analysis-add.html\',\'' + jsonArray[i]['r_id'] +
-                            '\',\'800\',\'500\')"\n' +
+                            '                                     title="报表发送到邮箱"><i class="Hui-iconfont">&#xe644;</i></a> <a title="下载报表"\n' +
+                            '                                                                                            href="' +
+                            '/downloadFile?r_id=' + '' + jsonArray[i]['r_id'] + '' +
                             '                                                                                            class="ml-5"\n' +
                             '                                                                                            style="text-decoration:none"><i\n' +
-                            '                    class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"\n' +
+                            '                    class="Hui-iconfont">&#xe640;</i></a> <a title="删除" href="javascript:;"\n' +
                             '                                                             onclick="analysis_del(this,\'' + jsonArray[i]['r_id'] +
                             '\')" class="ml-5"\n' +
                             '                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></p>'
@@ -136,15 +135,12 @@
                             '<p align="center" class="td-manage"><a style="text-decoration:none" onClick="analysis_start(this,\'' + jsonArray[i]['r_id'] +
                             '\')" href="javascript:;"\n' +
                             '                                     title="报表发送到邮箱"><i class="Hui-iconfont">&#xe644;</i></a> <a title="下载报表"\n' +
-                            '                                                                                            href="javascript:;"\n' +
-                            '                                                                                            onclick="analysis_edit(\'分析下载报表\',\'analysis-add.html\',\'' + jsonArray[i]['r_id'] +
-                            '\',\'800\',\'500\')"\n' +
+                            '                                                                                            href="' +
+                            '/downloadFile?r_id=' + '' + jsonArray[i]['r_id'] + '' +
+                            '"\n' +
                             '                                                                                            class="ml-5"\n' +
                             '                                                                                            style="text-decoration:none"><i\n' +
-                            '                    class="Hui-iconfont">&#xe640;</i></a> <a title="删除" href="javascript:;"\n' +
-                            '                                                             onclick="analysis_del(this,\'' + jsonArray[i]['r_id'] +
-                            '\')" class="ml-5"\n' +
-                            '                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></p>'
+                            '                    class="Hui-iconfont">&#xe640;</i></a> </p>'
 
 
                     ]).draw();

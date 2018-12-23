@@ -6,8 +6,9 @@ package xyz.hui_yi.keywords.bean;
 public class ResultBean {
     private String industry;
     private String stockname;//股票名称
-    private String stockcode;//股票代码
-    private String typename;//指标
+    private String stockcode;
+//    private String name;//指标
+    private String name;//指标名称
     private int count;
 
     public String getIndustry() {
@@ -26,12 +27,12 @@ public class ResultBean {
         this.stockname = stockname;
     }
 
-    public String getTypename() {
-        return typename;
+    public String getname() {
+        return name;
     }
 
-    public void setTypename(String typename) {
-        this.typename = typename;
+    public void setname(String name) {
+        this.name = name;
     }
 
     public int getCount() {
@@ -56,7 +57,7 @@ public class ResultBean {
                 "industry='" + industry + '\'' +
                 ", stockname='" + stockname + '\'' +
                 ", stockcode='" + stockcode + '\'' +
-                ", typename='" + typename + '\'' +
+                ", name='" + name + '\'' +
                 ", count=" + count +
                 '}';
     }
