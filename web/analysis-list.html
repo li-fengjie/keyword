@@ -205,8 +205,10 @@
                 "r_id=" + id);
         });
     }
+
     /*分析-发送邮件*/
     function analysis_sendEmail(id) {
+        layer.msg('发送中...', {icon: 6, time: 6000});
         var xmlhttp = getXMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
@@ -219,10 +221,7 @@
                     layer.msg(str, {icon: 1, time: 5000});
                 }
                 return false;
-            }else {
-                layer.msg('发送中...', {icon: 2, time: 50});
             }
-
         };
         //javascript请求的网址
         var url = "/sendEmail";
