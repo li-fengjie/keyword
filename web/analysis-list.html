@@ -120,7 +120,7 @@
                             '<p align="center" class="td-status">' + '<span class="label label-success radius">已完成</span>' + '</p>' :
                             '<p align="center" class="td-status">' + '<span class="label label-default radius loading">分析中...</span>' + '</p>',
                         (jsonArray[i]['state'] === "" || jsonArray[i]['state'] === "0" || jsonArray[i]['state'] === 0) ?
-                            '<p align="center" class="td-manage"><a style="text-decoration:none" onClick="analysis_stop(this,\'' + jsonArray[i]['r_id'] +
+                            '<p align="center" class="td-manage"><a style="text-decoration:none" onClick="analysis_sendEmail(\'' + jsonArray[i]['r_id'] +
                             '\')" href="javascript:;"\n' +
                             '                                     title="报表发送到邮箱"><i class="Hui-iconfont">&#xe644;</i></a> <a title="下载报表"\n' +
                             '                                                                                            href="' +
@@ -133,7 +133,7 @@
                             '\')" class="ml-5"\n' +
                             '                                                             style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></p>'
                             :
-                            '<p align="center" class="td-manage"><a style="text-decoration:none" onClick="analysis_start(this,\'' + jsonArray[i]['r_id'] +
+                            '<p align="center" class="td-manage"><a style="text-decoration:none" onClick="analysis_sendEmail(\'' + jsonArray[i]['r_id'] +
                             '\')" href="javascript:;"\n' +
                             '                                     title="报表发送到邮箱"><i class="Hui-iconfont">&#xe644;</i></a> <a title="下载报表"\n' +
                             '                                                                                            href="' +
@@ -204,6 +204,35 @@
             xmlhttp.send("" +
                 "r_id=" + id);
         });
+    }
+    /*分析-发送邮件*/
+    function analysis_sendEmail(id) {
+        var xmlhttp = getXMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                //4代表响应数据已经读取完毕。
+                //200代表代表读取的响应数据是一个成功的数据。
+                var str = xmlhttp.responseText;
+                if (str == "true") {
+                    layer.msg('已发送!', {icon: 1, time: 1500});
+                } else {
+                    layer.msg(str, {icon: 1, time: 5000});
+                }
+                return false;
+            }else {
+                layer.msg('发送中...', {icon: 2, time: 50});
+            }
+
+        };
+        //javascript请求的网址
+        var url = "/sendEmail";
+        //打开连接
+        xmlhttp.open("post", url);
+        //设置请求信息的头
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //发送数据
+        xmlhttp.send("" +
+            "r_id=" + id);
     }
 </script>
 </body>

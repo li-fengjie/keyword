@@ -2,8 +2,9 @@ package xyz.hui_yi.keywords.bean;
 
 public class EmailBean {
     private String host;
-    private String from;
-    private String to;
+    private String fromm;
+    private String too;
+    private String password = "";
 
     public String getHost() {
         return host;
@@ -13,19 +14,37 @@ public class EmailBean {
         this.host = host;
     }
 
-    public String getFrom() {
-        return from;
+    public String getFromm() {
+        return fromm;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setFromm(String fromm) {
+        this.fromm = fromm;
     }
 
-    public String getTo() {
-        return to;
+    public String getPassword() {
+        return password;
     }
 
-    public void setTo(String to) {
-        this.to = to;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getToo() {
+        return too;
+    }
+
+    public void setToo(String too) {
+        this.too = too;
+    }
+
+    @Override
+    public String toString() {
+        return "EmailBean{" +
+                "host='" + host + '\'' +
+                ", fromm='" + fromm + '\'' +
+                ", too='" + too + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
