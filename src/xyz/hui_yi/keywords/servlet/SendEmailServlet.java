@@ -30,7 +30,7 @@ public class SendEmailServlet extends HttpServlet {
     AnalysisDao analysisDao = new AnalysisDao();
     private AimsResultDao aimsResultDao = new AimsResultDao();
     private List<ResultBean> resultBeans;
-    EmailDao emailDao = new EmailDao();
+    private EmailDao emailDao = new EmailDao();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);

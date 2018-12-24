@@ -75,6 +75,18 @@
                 }
                 return false;
             }
+            if(xmlhttp.readyState === 3 && xmlhttp.status === 200) {
+                //4代表响应数据已经读取完毕。
+                //200代表代表读取的响应数据是一个成功的数据。
+                var str = xmlhttp.responseText;
+                if (str == "true") {
+                    layer.msg('正在分析中。。', {icon: 1, time: 2000});
+                    window.parent.location.reload();//刷新父页面
+                } else {
+                    layer.msg(str, {icon: 1, time: 1000});
+                }
+                return false;
+            }
         };
         //javascript请求的网址
         var url = "/addAnalysis";
