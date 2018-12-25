@@ -6,16 +6,16 @@
     <property name="user">root</property>
     <property name="password">10521</property>
     
-    <property name="initialPoolSize">10</property>
-    <property name="maxIdleTime">30</property>
-    <property name="maxPoolSize">100</property>
-    <property name="minPoolSize">10</property>
+    <property name="initialPoolSize">20</property>
+    <property name="maxIdleTime">20</property>
+    <property name="maxPoolSize">500</property>
+    <property name="minPoolSize">50</property>
     <property name="maxStatements">400</property>
 
     <user-overrides user="test-user">
-      <property name="maxPoolSize">50</property>
-      <property name="minPoolSize">5</property>
-      <property name="maxStatements">0</property>
+      <property name="maxPoolSize">500</property>
+      <property name="minPoolSize">10</property>
+      <property name="maxStatements">10</property>
     </user-overrides>
 
   </default-config>

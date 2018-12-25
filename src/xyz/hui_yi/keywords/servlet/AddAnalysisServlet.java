@@ -20,11 +20,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 添加分析
  * 时间会很长
- *
+ * 分析统计主要逻辑
  * @author li-fengjie
  */
 @WebServlet("/addAnalysis")
@@ -39,6 +42,10 @@ public class AddAnalysisServlet extends HttpServlet {
     private List<ResultBean> resultBeans = new ArrayList<>();
 
     private static final int PAGE_SIZE = 500;
+    private static final int CORE_POOL_SIZE = 10;
+    private static final int MAX_POOL_SIZE = 2000;
+    private static final int KEEP_ALIVE_TIME = 200;
+    private static final int CAPACITY = 500;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -76,6 +83,12 @@ public class AddAnalysisServlet extends HttpServlet {
             }
 
             long sum = filePageBean.getPageSum();
+
+            //TODO 多线程
+            //线程池
+            ThreadPoolExecutor executor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME, TimeUnit.MILLISECONDS,
+                    new ArrayBlockingQueue<Runnable>(CAPACITY));
+
             for (int i = 2; i <= sum; i++) {
                 filePageBean = fileDao.queryFilePageBean(i, PAGE_SIZE);
                 sum = filePageBean.getPageSum();
@@ -160,6 +173,7 @@ public class AddAnalysisServlet extends HttpServlet {
                     ee.printStackTrace();
                 }
             }
+            e.printStackTrace();
         }
 
     }
