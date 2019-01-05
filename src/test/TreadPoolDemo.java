@@ -30,6 +30,9 @@ class MyTask implements Runnable {
     @Override
     public void run() {
         System.out.println("正在执行task " + taskNum);
+//        for (int j = step*i; j < step*(i + 1); j++){
+//
+//        }
         try {
             Thread.currentThread().sleep(4000);
         } catch (InterruptedException e) {

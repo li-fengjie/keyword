@@ -187,8 +187,6 @@
                     var str = xmlhttp.responseText;
                     if (str == "true") {
                         $(obj).parents("tr").remove();
-                        t.AccepteChanges();
-                        t.row.
                         layer.msg('已删除!', {icon: 1, time: 1000});
                     } else {
                         layer.msg(str, {icon: 0, time: 1000});
