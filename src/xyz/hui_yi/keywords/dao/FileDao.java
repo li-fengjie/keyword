@@ -36,6 +36,22 @@ public class FileDao {
 		return null;
 	}
 
+    public FilePageBean queryFilePageBean1(int pageno, int pagesize) {
+        QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
+        String sql="select * from file_data limit ?,?";
+        FilePageBean FilePageBean=new FilePageBean();
+        try {
+            List<FileBean> FileBeans=qr.query(sql, new BeanListHandler<FileBean>(FileBean.class),(pageno-1)*pagesize,pagesize);
+            FilePageBean.setPageNo(pageno);
+            FilePageBean.setPageSize(pagesize);
+            FilePageBean.setFileBeans(FileBeans);
+            return FilePageBean;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 	public FilePageBean queryFilePageBean() {
 		QueryRunner qr=new QueryRunner(C3P0Utils.getDataSource());
 		String sql="select * from file_data order by d_id desc";

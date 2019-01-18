@@ -224,9 +224,9 @@ class MyTask implements Runnable {
     public void run() {
         System.out.println("正在执行task " + i);
         System.out.println(step + "");
-        for (long j = step*i; j < step*(i + 1); j++) {
-            System.out.println(j+"");
-                filePageBean = fileDao.queryFilePageBean((int)j, PAGE_SIZE);
+        for (long j = step*i + 1; j <= step*(i + 1); j++) {
+            System.out.println("jjjjjjjjjjj " + j+"");
+                filePageBean = fileDao.queryFilePageBean1((int)j, PAGE_SIZE);
             System.out.println(filePageBean.toString());
                 fileBeans = filePageBean.getFileBeans();
                 for (FileBean f : fileBeans
