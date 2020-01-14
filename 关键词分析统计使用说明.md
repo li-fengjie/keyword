@@ -119,4 +119,4 @@
 ***
 
 ![](15.png)
-![新闻报道](https://ie.jxust.edu.cn/info/1078/9004.htm "新闻报道")                                                                                                                                                                                 
+![新闻报道](https://ie.jxust.edu.cn/info/1078/9004.htm)                                                                                                                                                                                 
