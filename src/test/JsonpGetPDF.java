@@ -4,7 +4,6 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import xyz.hui_yi.keywords.bean.CompanyBean;
 import xyz.hui_yi.keywords.bean.CompanyPageBean;
-import xyz.hui_yi.keywords.bean.FileBean;
 import xyz.hui_yi.keywords.dao.CompanyDao;
 import xyz.hui_yi.keywords.dao.FileDao;
 import xyz.hui_yi.keywords.utils.commons.CommonsUtils;

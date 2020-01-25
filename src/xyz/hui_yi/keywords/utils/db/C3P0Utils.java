@@ -11,7 +11,6 @@ public class C3P0Utils {
 	private static DataSource dataSource= new ComboPooledDataSource();
 	public static DataSource getDataSource() {
 		return dataSource;
-		
 	}
 
 	public static Connection getConnection() {

@@ -6,7 +6,19 @@ import java.util.concurrent.TimeUnit;
 
 public class TreadPoolDemo {
     public static void main(String[] args) {
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(10, 3000, 200, TimeUnit.MILLISECONDS,
+        /**
+         *
+         corePoolSize 核心线程池大小
+         maximumPoolSize 线程池最大容量大小
+         keepAliveTime 线程池空闲时，线程存活的时间
+         TimeUnit 时间单位
+         ThreadFactory 线程工厂
+         BlockingQueue任务队列
+         RejectedExecutionHandler 线程拒绝策略
+
+         */
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(
+                10, 3000, 200, TimeUnit.MILLISECONDS,
                 new ArrayBlockingQueue<Runnable>(50));
 
         for (int i = 0; i < 3000; i++) {
