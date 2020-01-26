@@ -22,7 +22,8 @@ public class MailUtils {
         properties.setProperty("mail.host",host);//设置主机
         properties.setProperty("mail.smtp.auth","true");
 
-        Authenticator authenticator = new Authenticator() {
+        Authenticator authenticator =
+                new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(uname,password);
